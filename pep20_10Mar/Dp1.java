@@ -305,10 +305,11 @@ public class Dp1 {
 				if (gap == 1)
 					str[i][j] = dims[i] * dims[i + 1] * dims[i + 2];
 				int min = Integer.MAX_VALUE;
-				for (int k = 0; k < gap; k++) {
-					int lhc = str[i][j - gap + k];
-					int rhc = str[i + 1 + k][j];
-					int multc = dims[i] * dims[i + 1 + k] * dims[j + 1];
+				for (int k = i; k < j; k++) {
+					// i, k left half and k+1,j right half
+					int lhc = str[i][k];
+					int rhc = str[k+1][j];
+					int multc = dims[i] * dims[k+1] * dims[j + 1];
 					int tc = lhc + rhc + multc;
 					min = Math.min(min, tc);
 				}
